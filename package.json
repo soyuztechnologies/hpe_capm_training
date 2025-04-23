@@ -1,0 +1,24 @@
+{
+  "name": "mycapapp",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.14.3",
+    "@sap/cds": "^8",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.9.0",
+    "@cap-js/sqlite": "^1"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-managepo": "cds watch --open managepo/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/managepo"
+  ]
+}

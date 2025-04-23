@@ -1,0 +1,85 @@
+###Get the service document
+http://localhost:4004/odata/v4/CatalogService
+
+###Get service metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+###Get the employee data - All
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###Pagination - chunk by chunk
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=2
+
+###Load Single Employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197E7FB
+
+###Load data by filtering
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=bankName eq 'My Bank of San Francisco'
+
+###Filter with pattern search 
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(nameFirst,'Su')
+
+###Get the count of employees
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###Create a new employee
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+  "nameFirst": "Chistiano",
+  "nameMiddle": null,
+  "nameLast": "Ronaldo",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": null,
+  "email": "christiano.ronaldo@hpe.com",
+  "loginName": "RONALDOCH",
+  "Currency_code": "EUR",
+  "salaryAmount": 200000,
+  "accountNumber": "7766554433",
+  "bankId": "121000358",
+  "bankName": "RBS"
+}
+
+###Get the created employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/eba57b0b-dbcf-4b5e-9b11-3e4510fcefd7
+
+
+###Update salary of employee
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/f8817d4b-2cdd-49a3-a4b3-a19403a9e6de
+Content-Type: application/json
+
+{
+    "salaryAmount": 10000001,
+    "Currency_code": "USD"
+}
+
+###Remove data from DB
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/eba57b0b-dbcf-4b5e-9b11-3e4510fcefd7
+
+###Lazy Loading
+http://localhost:4004/odata/v4/CatalogService/Products
+
+###Get Single product
+http://localhost:4004/odata/v4/CatalogService/Products/74867AD200E41EDBA5D8B06B26EB8052/To_Items
+
+###Get All Purchase orders
+http://localhost:4004/odata/v4/CatalogService/POs
+
+###Get Single Purchase order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DCC4052
+
+###Get PO and its items in a single call $expand
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DCC4052?$expand=Items
+
+
+###Call function
+http://localhost:4004/odata/v4/CatalogService/getLargestOrder()
+
+###Instance bound action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DCC4052/CatalogService.boost
+Content-Type: application/json
+
+{}
