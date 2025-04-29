@@ -1,0 +1,19 @@
+{
+    "welcomeFile": "managepo/webapp/",
+    "authenticationMethod": "route",
+    "sessionTimeout": 100,
+    "pluginMetadataEndpoint": "/metadata",
+    "routes": [
+      {
+        "source": "^/managepo/webapp/(.*)",
+        "target": "$1",
+        "localDir": "managepo/webapp/",
+        "authenticationType": "xsuaa"
+      },
+      {
+        "source": "^/(.*)$",
+        "destination": "srv-api",
+        "authenticationType": "xsuaa"
+      }
+    ]
+  }
